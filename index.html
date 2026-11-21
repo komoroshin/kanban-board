@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7fb">
+  <title>Канбан-доска</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./board.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <strong class="brand"><span class="brand-icon" aria-hidden="true"></span> Канбан</strong>
+      <span class="storage-note"><span aria-hidden="true"></span> Хранение в браузере</span>
+    </div>
+  </header>
+  <main class="shell">
+    <section class="overview" aria-labelledby="heading">
+      <div class="overview-copy">
+        <h1 id="heading">Моя доска</h1>
+        <p>Перетаскивайте карточки между колонками или меняйте статус в карточке.</p>
+        <button type="button" class="primary" id="new-task"><span aria-hidden="true">+</span> Новая задача</button>
+      </div>
+      <div class="progress-panel">
+        <div class="progress-heading">
+          <span>Прогресс</span>
+          <strong id="percentage">0%</strong>
+        </div>
+        <progress id="progress" max="100" value="0" aria-label="Доля выполненных задач"></progress>
+        <p id="progress-count">Выполнено 0 из 0</p>
+      </div>
+    </section>
+    <section id="board" class="board" aria-label="Колонки доски"></section>
+    <noscript>Для работы доски включите JavaScript.</noscript>
+  </main>
+  <dialog id="editor" aria-labelledby="editor-title">
+    <form id="task-form" method="dialog">
+      <div class="editor-heading">
+        <h2 id="editor-title">Новая задача</h2>
+        <button type="button" id="close-editor" class="close" aria-label="Закрыть">×</button>
+      </div>
+      <label for="title">Название</label>
+      <input id="title" name="title" required maxlength="120" autocomplete="off" autofocus>
+      <label for="description">Описание</label>
+      <textarea id="description" name="description" rows="4" maxlength="2000"></textarea>
+      <label for="status">Статус</label>
+      <select id="status" name="status"></select>
+      <p id="editor-error" role="alert"></p>
+      <div class="editor-actions">
+        <button type="button" id="delete-task" class="danger" hidden>Удалить</button>
+        <button type="submit" class="primary">Сохранить</button>
+      </div>
+    </form>
+  </dialog>
+  <div id="notice" class="notice" role="status"></div>
+</body>
+</html>
